@@ -1,6 +1,6 @@
 # cesar-cipher-in-verilog
 
-Muitos dos progressos feitos pela humanidade foram em sua grande parte graças à habilidade de comunicação desenvolvida pelos seres humanos. Desdes os primórdios da humanidade existe a necessidade de um indivíduo se comunicar com um grupo seleto de pessoas, e daí surge a motivação para a criação de um método que possibilite transformar uma mensagem em um cifra que, se interceptada, torne difícil a absorção da informação contida na mensagem por parte do interceptador. 
+Muitos dos progressos feitos pela humanidade foram em sua grande parte graças à habilidade de comunicação desenvolvida pelos seres humanos. Desde os primórdios da humanidade existe a necessidade de um indivíduo se comunicar com um grupo seleto de pessoas, e daí surge a motivação para a criação de um método que possibilite transformar uma mensagem em uma cifra que, se interceptada, torne difícil a absorção da informação contida na mensagem por parte do interceptador. 
 
 A criptoanálise é uma das principais forças de uma nação em uma Guerra. Ela foi muito utilizada nas duas Guerras Mundiais que esse mundo vivenciou. Ela é responsável pela derrocada de líderes militares, assim como pela promoção de outros. Antigamente essa função de criptoanálise de mensagens era feita por poucos engenheiros e matemáticos. Hoje em dia, a quebra de códigos é realizada por inúmeras pessoas com conhecimentos nas mais diversificadas áreas. 
 
@@ -115,11 +115,106 @@ Todas as etapas devem ser documentadas no relatório que deverá ser entregue. O
 ambiente de submissão do trabalho, e é necessário que apenas um aluno do grupo o faça. Deverá ser
 submetido um arquivo compactado (.zip) contendo:
 
-● A documentação detalhada em formato .pdf,
+● A documentação detalhada em formato .pdf
+
 ● Os arquivos em Verilog dos módulos implementados e do módulo de teste (testbench)
+
 ● Arquivo de simulação de ondas (.vcd).
+
 ● Um vídeo de até 5 minutos explicando o código e demonstrando o funcionamento.
-OBS: Para a etapa da FPGA vocês devem enviar apenas os arquivos utilizados no Quartus,
-elaborar uma nova documentação e um novo vídeo.
+
+OBS: Para a etapa da FPGA vocês devem enviar apenas os arquivos utilizados no Quartus elaborar uma nova documentação e um novo vídeo.
+
+# 5. Configurando o ambiente
+
+Configurando o ambiente para trabalhar com FPGA  (ALTERA DE2-115 CYCLONE IV)
+
+É necessário realizar o download dos seguintes itens:
+
+* Intel® Cyclone® IV Device Support
+* ModelSim-Intel® FPGA Edition (includes Starter Edition)
+* Intel® Quartus® Prime (includes Nios® II EDS)
+
+  ![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/7342ddb6-dd35-43ca-8a20-18acbb8544dc)
+
+
+Será utilizado a versão 17.0 neste tutorial. 
+OBS: a versão que vem no CD-ROM é a 10.0.
+OBS²: a versão lite é free.
+
+Windows:
+https://www.intel.com/content/www/us/en/software-kit/669557/intel-quartus-prime-lite-edition-design-software-version-17-0-for-windows.html
+
+Linux:
+https://www.intel.com/content/www/us/en/software-kit/669553/intel-quartus-prime-lite-edition-design-software-version-17-0-for-linux.html
+
+
+Durante a instalação, certifique-se que os seguintes itens estão marcados:
+
+![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/f1af0bf5-7b0d-4dec-b3be-cd99fd6b9055)
+
+
+Uma vez instalado, certifique-se que a porta USB-Blaster foi reconhecida. Conecte o cabo USB no seu computador e na porta USB Blaster Port. 
+
+![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/d416e36c-d8f1-4367-806c-6fe15265cd8c)
+
+Abra o Quartus e vá para: Tools > Programmer > Hardware Setup
+
+![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/4fa10102-7d9b-40f7-80b6-3f3a60dd3171)
+
+Se a porta USB não tiver sido reconhecida, instale o driver manualmente. 
+Caminho: intelFPGA_Lite\17.0\quartus\drivers
+
+![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/e3f870af-8830-4975-87c2-6c34286d867e)
+
+
+Utilize o System Builder para gerar o arquivo que você irá trabalhar. 
+
+System Builder
+http://download.terasic.com/downloads/cd-rom/de2-115/DE2_115_SystemBuilder_V101.zip
+
+Certifique-se que a configuração esteja igual ao do print abaixo.
+ Em seguida: Generate > Salvar.
+  
+![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/f4503869-5101-4b87-b772-f120b4a255d0)
+
+![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/c7bf576a-f4fa-4bfb-96e3-adaa7bea8751)
+
+Abra o arquivo .qpf. 
+
+
+OBS:  Não é necessário importar o módulo “numero.v” ou qualquer outro criado no DE2_115.v se o arquivo estiver no mesmo diretório.
+
+
+Observem que ao final do arquivo DE2_115.v há um espaço para vocês realizarem a codificação.
+
+![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/17b5149b-6fe9-4cac-9191-c60f0d3d9a98)
+
+
+Uma vez codificado, clique do lado direito em Compile Design e em seguida clique em Start. 
+
+![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/e585842b-dbb0-46ca-ada8-fd4bbe09e079)
+
+
+Se não houver nenhum erro, o programa irá informar com checks verdes que conseguiu compilar com sucesso. Caso contrário, ele irá informar o erro.
+
+Agora, é necessário executar o programa na FPGA. Clique do lado direito em Program Device e clique em Open
+![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/2d51b1d5-eebc-48f0-baaa-f734aac1df61)
+
+
+Será exibido a janela Programmer, clique em Start para executar seu programa na FPGA.
+![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/839ba6a5-55aa-4f71-80ce-0db6584fc284)
+
+
+![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/81f9f188-f3f1-4c41-b434-20b44fff7854)
+Seu programa estará disponível e funcionando na FPGA quando o progresso completar 100%. Boa diversão :)
+
+Referências úteis:
+
+https://www.intel.com/content/www/us/en/developer/articles/training/how-to-program-your-first-fpga-device.html
+http://www.terasic.com.tw/cgi-bin/page/archive_download.pl?Language=China&No=502&FID=cd9c7c1feaa2467c58c9aa4cc02131af
+https://www.youtube.com/watch?v=xB99jX9QMOE
+
+
 
 
