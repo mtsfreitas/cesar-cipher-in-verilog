@@ -1,0 +1,81 @@
+|numero_display
+KEY[0] => _.IN1
+KEY[1] => KEY[1].IN1
+KEY[2] => ~NO_FANOUT~
+KEY[3] => ~NO_FANOUT~
+SW[0] => SW[0].IN1
+SW[1] => SW[1].IN1
+SW[2] => SW[2].IN1
+SW[3] => SW[3].IN1
+SW[4] => ~NO_FANOUT~
+SW[5] => ~NO_FANOUT~
+SW[6] => ~NO_FANOUT~
+SW[7] => ~NO_FANOUT~
+SW[8] => ~NO_FANOUT~
+SW[9] => ~NO_FANOUT~
+SW[10] => ~NO_FANOUT~
+SW[11] => ~NO_FANOUT~
+SW[12] => ~NO_FANOUT~
+SW[13] => ~NO_FANOUT~
+SW[14] => ~NO_FANOUT~
+SW[15] => ~NO_FANOUT~
+SW[16] => ~NO_FANOUT~
+SW[17] => ~NO_FANOUT~
+HEX7[0] << display:display_Synt.hex
+HEX7[1] << display:display_Synt.hex
+HEX7[2] << display:display_Synt.hex
+HEX7[3] << display:display_Synt.hex
+HEX7[4] << display:display_Synt.hex
+HEX7[5] << display:display_Synt.hex
+HEX7[6] << display:display_Synt.hex
+
+
+|numero_display|numero:numero_Synt
+A => s4.IN0
+A => s4.IN0
+A => s1.IN0
+B => s4.IN1
+B => s4.IN1
+B => s3.IN0
+B => s1.IN1
+C => s4.IN1
+C => s4.IN1
+C => s3.IN1
+D => s4.IN1
+D => s2.IN1
+D => s0.IN1
+D => s3.IN1
+D => s1.IN1
+ready => saida[0]~reg0.CLK
+ready => saida[1]~reg0.CLK
+ready => saida[2]~reg0.CLK
+ready => saida[3]~reg0.CLK
+ready => saida[4]~reg0.CLK
+reset => saida.OUTPUTSELECT
+reset => saida.OUTPUTSELECT
+reset => saida.OUTPUTSELECT
+reset => saida.OUTPUTSELECT
+reset => saida.OUTPUTSELECT
+reset => q.CLK
+saida[0] <= saida[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+saida[1] <= saida[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+saida[2] <= saida[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+saida[3] <= saida[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+saida[4] <= saida[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|numero_display|display:display_Synt
+entradas[0] => Decoder0.IN4
+entradas[1] => Decoder0.IN3
+entradas[2] => Decoder0.IN2
+entradas[3] => Decoder0.IN1
+entradas[4] => Decoder0.IN0
+hex[0] <= hex.DB_MAX_OUTPUT_PORT_TYPE
+hex[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+hex[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+hex[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+hex[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+hex[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+hex[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
