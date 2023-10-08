@@ -249,7 +249,7 @@ https://www.bing.com/videos/search?q=logisim+to+generate+circuit&docid=608046466
 
 ## Formas canônicas
  
-MINTERMO (1):
+* MINTERMO (1):
 
 | S   | Termo                                              |
 | --- | -------------------------------------------------- |
@@ -307,3 +307,5 @@ Legenda:
 
 ![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/319b1352-ab24-4908-a052-1ee0954cdedb)
 
+
+Autor: Matheus Freitas Martins
