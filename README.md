@@ -249,40 +249,58 @@ https://www.bing.com/videos/search?q=logisim+to+generate+circuit&docid=608046466
 
 ## Formas canônicas
  
-* MINTERMO (1)
-s4	!A !B !C !D + !A !B !C D + !A !B C !D + !A !B C D + !A B !C !D
-s3	!A !B !C D + !A !B C !D + !A !B C D + !A B !C !D + !A B !C D
-s2	!A !B C !D + !A !B C D + !A B !C !D + !A B !C D + !A B C !D
-s1	!A !B C D + !A B !C !D + !A B !C D + !A B C !D + !A B C D
-s0	!A B !C !D + !A B !C D +  !A B C !D + !A B C D + A !B !C !D
+MINTERMO (1):
+
+| S   | Termo                                              |
+| --- | -------------------------------------------------- |
+| s4  | !A !B !C !D + !A !B !C D + !A !B C !D + !A !B C D + !A B !C !D |
+| s3  | !A !B !C D + !A !B C !D + !A !B C D + !A B !C !D + !A B !C D |
+| s2  | !A !B C !D + !A !B C D + !A B !C !D + !A B !C D + !A B C !D |
+| s1  | !A !B C D + !A B !C !D + !A B !C D + !A B C !D + !A B C D |
+| s0  | !A B !C !D + !A B !C D + !A B C !D + !A B C D + A !B !C !D |
+
+
 	
-* MAXTERMO (0)
-s4	(A+!B+C+!D) (A+!B+!C+D) (A+!B+!C+!D) (!A+B+C+D) (!A+C+D+!E)
-s3	(A+B+C+D) (A+!B+!C+D) (A+!B+!C+!D) (!A+B+C+D) (!A+B+C+!D)
-s2	(A+B+C+D) (A+B+C+!D) (A+!B+!C+!D) (!A+B+C+D) (!A+B+C+!D)
-s1	(A+B+C+D) (A+B+C+!D) (A+B+!C+D) (!A+B+C+D) (!A+B+C+!D)
-s0	(A+B+C+D) (A+B+C+!D) (A+B+!C+D) (A+B+!C+!D) (!A+B+C+!D)
+* MAXTERMO (0):
+  
+| S   | Termos                                                  |
+| --- | ------------------------------------------------------- |
+| s4  | (A+!B+C+!D) (A+!B+!C+D) (A+!B+!C+!D) (!A+B+C+D) (!A+C+D+!E) |
+| s3  | (A+B+C+D) (A+!B+!C+D) (A+!B+!C+!D) (!A+B+C+D) (!A+B+C+!D) |
+| s2  | (A+B+C+D) (A+B+C+!D) (A+!B+!C+!D) (!A+B+C+D) (!A+B+C+!D) |
+| s1  | (A+B+C+D) (A+B+C+!D) (A+B+!C+D) (!A+B+C+D) (!A+B+C+!D) |
+| s0  | (A+B+C+D) (A+B+C+!D) (A+B+!C+D) (A+B+!C+!D) (!A+B+C+!D) |
+
 
 ## Formas Minimizadas (K-map)
 	
-* MINTERMO (1)
-s4	!A !B + B !C !D
-s3	B !C + !B C + !A !B D
-s2	!B C + B !C + B !D
-s1	CD + B
-s0	A !D + B
-	
-* MAXTERMO (0)
-s4	(!B + !D) (!B +!C) (!A)
-s3	(B+C+D) (!B + !C) (!A)
-s2	(B+C) (!B + !C +!D)
-s1	(B+C) (B+D)
-s0	(A+B) (!A +!D)
+* MINTERMO (1):
+  
+| S   | Termos              |
+| --- | ------------------- |
+| s4  | !A !B + B !C !D     |
+| s3  | B !C + !B C + !A !B D |
+| s2  | !B C + B !C + B !D  |
+| s1  | CD + B              |
+| s0  | A !D + B            |
 
-MAXTERMO (0):
+	
+* MAXTERMO (0):
+  
+| S   | Termos                      |
+| --- | --------------------------- |
+| s4  | (!B + !D) (!B + !C) (!A)    |
+| s3  | (B + C + D) (!B + !C) (!A)  |
+| s2  | (B + C) (!B + !C + !D)      |
+| s1  | (B + C) (B + D)             |
+| s0  | (A + B) (!A + !D)           |
+
+Logisim com MAXTERMO (0):
+
 ![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/3b6f7d5e-7357-446d-87de-76458200b4f2)
 
-MINTERMO (1):
+Logisim com MINTERMO (1):
+
 ![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/00f63bce-8afb-4103-b978-179737b06946)
 
 Legenda:
