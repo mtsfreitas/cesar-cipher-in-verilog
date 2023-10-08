@@ -207,6 +207,7 @@ Será exibido a janela Programmer, clique em Start para executar seu programa na
 
 
 ![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/81f9f188-f3f1-4c41-b434-20b44fff7854)
+
 Seu programa estará disponível e funcionando na FPGA quando o progresso completar 100%. Boa diversão :)
 
 Referências úteis:
@@ -214,7 +215,77 @@ Referências úteis:
 https://www.intel.com/content/www/us/en/developer/articles/training/how-to-program-your-first-fpga-device.html
 http://www.terasic.com.tw/cgi-bin/page/archive_download.pl?Language=China&No=502&FID=cd9c7c1feaa2467c58c9aa4cc02131af
 https://www.youtube.com/watch?v=xB99jX9QMOE
+https://www.boolean-algebra.com/kmap/
+http://www.32x8.com/var4kmapx.html
+https://play.google.com/store/apps/details?id=karnagh.ammsoft.karnagh&hl=en_US&gl=US"										
+http://www.asic-world.com/verilog/veritut.html										
+https://www.youtube.com/watch?v=3Xm6fgKAO94										
+https://www.youtube.com/watch?v=aYVz0l3ZMWc&t=250s										
+https://www.youtube.com/shorts/y_a0tsLkhBY										
+https://www.youtube.com/watch?v=KXZ-wxfF4do										
+https://www.bing.com/videos/search?q=logisim+to+generate+circuit&docid=608046466311195536&mid=F7ABDF8F7B8E0B6A2F41F7ABDF8F7B8E0B6A2F41&view=detail&FORM=VIRE										
+
+# Exemplo utilizando a chave 1: 
+
+| Index | A   | B   | C   | D   | S4 | S3 | S2 | S1 | S0 |
+|-------|-----|-----|-----|-----|----|----|----|----|----|
+| 0     | 0   | 0   | 0   | 0   | 1  | 0  | 0  | 0  | 0  |
+| 1     | 0   | 0   | 0   | 1   | 1  | 1  | 0  | 0  | 0  |
+| 2     | 0   | 0   | 1   | 0   | 1  | 1  | 1  | 0  | 0  |
+| 3     | 0   | 0   | 1   | 1   | 1  | 1  | 1  | 1  | 0  |
+| 4     | 0   | 1   | 0   | 0   | 1  | 1  | 1  | 1  | 1  |
+| 5     | 0   | 1   | 0   | 1   | 0  | 1  | 1  | 1  | 1  |
+| 6     | 0   | 1   | 1   | 0   | 0  | 0  | 1  | 1  | 1  |
+| 7     | 0   | 1   | 1   | 1   | 0  | 0  | 0  | 1  | 1  |
+| 8     | 1   | 0   | 0   | 0   | 0  | 0  | 0  | 0  | 1  |
+| 9     | 1   | 0   | 0   | 1   | 0  | 0  | 0  | 0  | 0  |
+| 10    | 1   | 0   | 1   | 0   | x  | x  | x  | x  | x  |
+| 11    | 1   | 0   | 1   | 1   | x  | x  | x  | x  | x  |
+| 12    | 1   | 1   | 0   | 0   | x  | x  | x  | x  | x  |
+| 13    | 1   | 1   | 0   | 1   | x  | x  | x  | x  | x  |
+| 14    | 1   | 1   | 1   | 0   | x  | x  | x  | x  | x  |
+| 15    | 1   | 1   | 1   | 1   | x  | x  | x  | x  | x  |
 
 
+## Formas canônicas
+ 
+* MINTERMO (1)
+s4	!A !B !C !D + !A !B !C D + !A !B C !D + !A !B C D + !A B !C !D
+s3	!A !B !C D + !A !B C !D + !A !B C D + !A B !C !D + !A B !C D
+s2	!A !B C !D + !A !B C D + !A B !C !D + !A B !C D + !A B C !D
+s1	!A !B C D + !A B !C !D + !A B !C D + !A B C !D + !A B C D
+s0	!A B !C !D + !A B !C D +  !A B C !D + !A B C D + A !B !C !D
+	
+* MAXTERMO (0)
+s4	(A+!B+C+!D) (A+!B+!C+D) (A+!B+!C+!D) (!A+B+C+D) (!A+C+D+!E)
+s3	(A+B+C+D) (A+!B+!C+D) (A+!B+!C+!D) (!A+B+C+D) (!A+B+C+!D)
+s2	(A+B+C+D) (A+B+C+!D) (A+!B+!C+!D) (!A+B+C+D) (!A+B+C+!D)
+s1	(A+B+C+D) (A+B+C+!D) (A+B+!C+D) (!A+B+C+D) (!A+B+C+!D)
+s0	(A+B+C+D) (A+B+C+!D) (A+B+!C+D) (A+B+!C+!D) (!A+B+C+!D)
 
+## Formas Minimizadas (K-map)
+	
+* MINTERMO (1)
+s4	!A !B + B !C !D
+s3	B !C + !B C + !A !B D
+s2	!B C + B !C + B !D
+s1	CD + B
+s0	A !D + B
+	
+* MAXTERMO (0)
+s4	(!B + !D) (!B +!C) (!A)
+s3	(B+C+D) (!B + !C) (!A)
+s2	(B+C) (!B + !C +!D)
+s1	(B+C) (B+D)
+s0	(A+B) (!A +!D)
+
+MAXTERMO (0):
+![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/3b6f7d5e-7357-446d-87de-76458200b4f2)
+
+MINTERMO (1):
+![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/00f63bce-8afb-4103-b978-179737b06946)
+
+Legenda:
+
+![image](https://github.com/mtsfreitas/cesar-cipher-in-verilog/assets/21324690/319b1352-ab24-4908-a052-1ee0954cdedb)
 
