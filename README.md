@@ -91,12 +91,12 @@ equipe;
 2. Simplificação das equações booleanas utilizando lógica booleana e mapas de Karnaugh;
 3. Apresentação das formas canônicas e reduzidas;
 4. Apresentação do mintermo e do maxtermo das saídas;
-5. Elaboração do circuito simplificado com portas lógicas no software Logisim (http://www.cburch.com/logisim/download.html).
+5. Elaboração do circuito simplificado com portas lógicas no software [Logisim](http://www.cburch.com/logisim/download.html).
 
 Os passos seguintes devem ser seguidos no processo de desenvolvimento de todos os
 módulos:
-1. Elaboração e simulação dos módulos em Verilog através da ferramenta Icarus Verilog (iverilog.icarus.com);
-2. Visualização das formas de onda resultantes através da ferramenta GTKWave (https://gtkwave.sourceforge.net/).
+1. Elaboração e simulação dos módulos em Verilog através da ferramenta [Icarus Verilog](https://bleyer.org/icarus/);
+2. Visualização das formas de onda resultantes através da ferramenta [GTKWave](https://gtkwave.sourceforge.net/).
 
 # 3. Dicas
 
